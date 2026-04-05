@@ -108,7 +108,7 @@ function loadGeoJSONFile() {
 // Shows the default state of the info panel.
 // No polygon data yet - just the prompt to click a polygon.
 function showDefaultInfoPanel() {
-    $("#info-name").text("&larr; Click a polygon on the map to see details");
+    $("#info-name").text("← Click a polygon on the map to see details");
     $("#info-tree").text("--");
     $("#info-shrub").text("--");
     $("#info-herb").text("--");
