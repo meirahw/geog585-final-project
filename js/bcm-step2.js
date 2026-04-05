@@ -36,7 +36,7 @@ var POLYGON_OUTLINE_OPACITY = 0.8;
 
 // -- NEW IN STEP 2 ---------------------------------------------
 // Style for the selected (clicked) polygon
-var SELECTED_OUTLINE_COLOR   = "#ff4400";
+var SELECTED_OUTLINE_COLOR   = "#ff0000";
 var SELECTED_OUTLINE_WIDTH   = 4;
 var SELECTED_OUTLINE_OPACITY = 1.0;
 var SELECTED_FILL_OPACITY    = 0.75;
