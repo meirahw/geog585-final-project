@@ -2,7 +2,7 @@
    bcm-step2.js  -  STEP 2: Polygon Selection + Info Panel
 
    What's new in this step:
-   - Clicking a polygon highlights it with a bold red-orange outline
+   - Clicking a polygon highlights it with a bold red outline
    - Info panel fills in with vegetation type, cover %, and acreage
    - Only one polygon can be selected at a time
 
@@ -162,6 +162,7 @@ function formatAsPercent(value) {
     return parseFloat(value).toFixed(1) + "%";
 }
 
+/* Used Claude AI to help with this function */
 function convertSquareDegreesToAcres(shapeArea) {
     var latRad = STUDY_LATITUDE_DEGREES * (Math.PI / 180);
     var metersPerLatDeg = 110947;
