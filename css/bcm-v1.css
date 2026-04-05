@@ -3,13 +3,11 @@
 
    ORGANIZATION:
    Part 1 - Global reset
-   Part 2 - Page layout (the 40/60 split)
+   Part 2 - Page layout
    Part 3 - Map area (left side)
-   Part 4 - Choropleth dropdown control
-   Part 5 - Info panel (right side)
-   Part 6 - Info panel rows
-   Part 7 - ET chart area
-   Part 8 - Responsive layout
+   Part 4 - Info panel (right side)
+   Part 5 - Info panel rows
+   Part 6 - Responsive layout
    ============================================================ */
 
 
@@ -70,7 +68,7 @@ html, body {
 }
 
 
-/* PART 5: INFO PANEL (right side, 60% width)
+/* PART 4: INFO PANEL (right side, 40% width)
 */
 
 #info-panel {
@@ -81,7 +79,7 @@ html, body {
 }
 
 
-/* PART 6: INFO PANEL ROWS
+/* PART 5: INFO PANEL ROWS
 */
 
 /*
@@ -187,7 +185,7 @@ html, body {
 }
 
 
-/* PART 7: ET CHART AREA
+/* PART 7: ET CHART AREA (placeholder)
 */
 
 #et-chart {
@@ -210,24 +208,7 @@ html, body {
     background-color: white;
 }
 
-#et-chart svg {
-    width: 100%;
-}
-
-/* D3 axis tick labels - "fill" is SVG's equivalent of CSS "color" */
-#et-chart .axis text {
-    font-size: 11px;
-    fill: #555;
-}
-
-/* D3 axis lines - "stroke" is SVG's equivalent of CSS "border-color" */
-#et-chart .axis line,
-#et-chart .axis path {
-    stroke: #aaa;
-}
-
-
-/* PART 8: RESPONSIVE LAYOUT
+/* PART 6: RESPONSIVE LAYOUT
    On narrow screens (phones), stack the map above the info panel
    instead of placing them side by side.
 */
