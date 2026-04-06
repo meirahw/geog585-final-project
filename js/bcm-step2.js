@@ -58,7 +58,7 @@ function createLeafletMap() {
 
 function createSatelliteBasemap() {
     return L.tileLayer(
-        "https://naip.arcgis.com/arcgis/rest/services/NAIP/ImageServer/tile/{z}/{y}/{x}",tile/{z}/{y}/{x}",/tile/{z}/{y}/{x}",
+        "https://gis.apfo.usda.gov/arcgis/rest/services/NAIP/tile/{z}/{y}/{x}",tile/{z}/{y}/{x}",/tile/{z}/{y}/{x}",
         { attribution: "Imagery (c) Esri", maxZoom: 19 }
     );
 }
