@@ -58,7 +58,7 @@ function createLeafletMap() {
 
 function createSatelliteBasemap() {
     return L.tileLayer(
-        "https://gis.apfo.usda.gov/arcgis/rest/services/NAIP/USDA_CONUS_PRIME/ImageServer/tile/",/tile/{z}/{y}/{x}",
+        "https://gis.apfo.usda.gov/arcgis/rest/services/NAIP/USDA_CONUS_PRIME/ImageServer/tile/{z}/{y}/{x}",
         { attribution: "Imagery (c) Esri", maxZoom: 19 }
     );
 }
