@@ -181,6 +181,7 @@ body {
     color: #333;
     flex: 3;
     min-height: 220px;
+    min-width: 100%;
 }
 
 #row-et .info-label {
@@ -188,26 +189,14 @@ body {
 }
 
 
-/* PART 7: ET CHART AREA (placeholder)
+/* PART 7: ET CHART
+    need to fix min-width... hangs over the info-panel, 
+    but any smaller and the year labels are too close/overlap 
 */
-
 #et-chart {
-    width: 100%;
-    height: 100%;
+    min-width: 450px;
     flex: 1;
     margin-top: 8px;
-}
-
-/* #et-chart svg {
-    max-width: 100%;
-    display: block;
-} */
-
-#row-et,
-#et-chart,
-#info-panel,   /* or whatever your side panel is called */
-#map {
-    min-width: 0;
 }
 
 /* Placeholder shown before a polygon is selected or when data is unavailable */
@@ -224,7 +213,7 @@ body {
     text-align: center;
     background-color: white;
 }
-
+/* tooltip */
 .et-tooltip {
     position: absolute;
     background: white;

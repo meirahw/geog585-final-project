@@ -39,7 +39,7 @@ d3.csv(PATH_CSV, d => ({
 
 
 function drawETChart(data) {
-
+    // mouseover function shows year, mean, p25, and p75
     var mouseover = function (event, d) {
         ETTooltip
             .style("opacity", 1)
@@ -53,6 +53,7 @@ function drawETChart(data) {
             .style("opacity", 1)
             .style("stroke", "black")
     }
+    // mousemove function draws black outline around dots
     var mousemove = function (event, d) {
         ETTooltip
             .style("left", (event.pageX + 10) + "px")
@@ -60,9 +61,8 @@ function drawETChart(data) {
         d3.select(this)
             .style("opacity", 1)
             .style("stroke", "black")
-
     }
-
+    // tooltip disappears (opacity: 0) and black out
     var mouseleave = function (event, d) {
         ETTooltip
             .style("opacity", 0)
@@ -73,6 +73,7 @@ function drawETChart(data) {
     // clear old chart
     d3.select("#et-chart").html("");
 
+    // select chart and get width of client browser
     var container = d3.select("#et-chart").node();
     var containerWidth = container.clientWidth;
     var containerHeight = container.clientHeight;
@@ -80,8 +81,11 @@ function drawETChart(data) {
     // dimensions
     var margin = { top: 10, right: 40, bottom: 30, left: 40 }
 
+    // calculate width and height based on margins and client browser
     var width = containerWidth - margin.left - margin.right;
     var height = containerHeight - margin.top - margin.bottom;
+
+    
 
     // svg
     var svg = d3.select("#et-chart")
@@ -106,7 +110,6 @@ function drawETChart(data) {
         .range([height, 0]);
 
     // axes
-
     svg.append("g")
         .attr("transform", `translate(0,${height})`)
         .call(d3.axisBottom(x));
@@ -146,6 +149,7 @@ function drawETChart(data) {
         .attr("cy", d => y(d.mean))
         .attr("r", 4)
         .attr("fill", "steelblue")
+        // mouse actions
         .on("mouseover", mouseover)
         .on("mousemove", mousemove)
         .on("mouseleave", mouseleave)
