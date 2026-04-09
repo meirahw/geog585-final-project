@@ -10,9 +10,13 @@
       js/bcm.js    - all interactive behavior (will use -step1, -step2, etc until finished)
 -->
 <html>
+
 <head>
 
+    <meta charset="UTF-8">
+
     <title>Riparian Ecosystems Map - Middle Rio Grande</title>
+
 
     <!-- CSS loads in <head> so elements are styled before appearing on screen.
          bcm.css loads last so our styles can override library defaults. -->
@@ -20,7 +24,19 @@
     <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="css/bcm-v1.css" />
 
+    <!-- JavaScript loads at the bottom so all HTML elements exist before scripts run.
+         Libraries load before bcm.js since bcm.js depends on them. -->
+    <script src="js/jquery.js"></script>
+    <script src="js/leaflet.js"></script>
+    <script src="js/d3.v7.js"></script>
+
+    <!-- bcm.js loads last - it uses all the libraries above -->
+    <script src="js/mrw-test1.js"></script>
+    <script src="js/mrw-charts.js"></script>
+
+
 </head>
+
 <body>
 
     <!-- #main-container: bcm.css uses flexbox here to place map and panel side by side -->
@@ -84,22 +100,19 @@
                     <div class="et-placeholder">
                         Select a polygon to view its ET trend
                     </div>
+                    <div class="et-tooltip"> </div>
+
+
                 </div>
             </div>
+
 
         </div><!-- end #info-panel -->
 
     </div><!-- end #main-container -->
 
 
-    <!-- JavaScript loads at the bottom so all HTML elements exist before scripts run.
-         Libraries load before bcm.js since bcm.js depends on them. -->
-    <script src="js/jquery.js"></script>
-    <script src="js/leaflet.js"></script>
-    <script src="js/d3.js"></script>
-
-    <!-- bcm.js loads last - it uses all the libraries above -->
-    <script src="js/bcm-step2.js"></script>
 
 </body>
+
 </html>
