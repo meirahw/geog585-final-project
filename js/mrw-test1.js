@@ -69,7 +69,7 @@ function createLeafletMap() {
 
 function createSatelliteBasemap() {
     return L.tileLayer(
-        "https://index.nationalmap.gov/arcgis/rest/services/USGSNAIPImageryIndex/MapServer/tile/{z}/{y}/{x}",
+        "https://index.nationalmap.gov/arcgis/rest/services/USGSNAIPImageryIndex/MapServer/{z}/{y}/{x}",
         { attribution: "Imagery (c) Esri", maxZoom: 19 }
     );
 }
@@ -209,8 +209,6 @@ function updateETChart(polygonData) {
         currentPolygon = null;
         $("#et-chart").html('<div class="et-placeholder">ET data is missing. Select a different polygon to view its ET trends. </div>'); 
         console.log("Data is missing", polygonData[0].poly_id);
-
-        return;
         
     } else {
         drawETChart(polygonData);
