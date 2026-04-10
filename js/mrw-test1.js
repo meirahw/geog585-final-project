@@ -16,7 +16,7 @@
    PART 1: SETTINGS
    ============================================================ */
 
-var GEOJSON_PATH = "./data/RipMapMRG_small.geojson";
+var GEOJSON_PATH = "./data/NMRipMap_MRG_Subset.geojson";
 
 var POLYGON_NAME_FIELD = "VegetationCommunityName";
 var GEOJSON_ID_FIELD = "OBJECTID";
@@ -205,7 +205,8 @@ function updateInfoPanel(properties) {
 function updateETChart(polygonData) {
 
     // first clause is what all empty data looks like to my knowledge
-    if (polygonData[0]["mean"] == 0 && isNaN(polygonData[1]["mean"]) || !polygonData || polygonData.length === 0) {
+    //if (polygonData[0]["mean"] == 0 && isNaN(polygonData[1]["mean"]) || !polygonData || polygonData.length === 0) {
+        if (isNaN(polygonData[0]["mean"]) && isNaN(polygonData[1]["mean"]) || !polygonData || polygonData.length === 0) {
         currentPolygon = null;
         $("#et-chart").html('<div class="et-placeholder">ET data is missing. Select a different polygon to view its ET trends. </div>'); 
         console.log("Data is missing", polygonData[0].poly_id);
