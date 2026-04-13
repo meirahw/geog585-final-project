@@ -21,9 +21,9 @@ var GEOJSON_PATH = "./data/NMRipMap_MRG_Subset.geojson";
 var POLYGON_NAME_FIELD = "VegetationCommunityName";
 var GEOJSON_ID_FIELD = "OBJECTID";
 
-var MAP_START_LAT = 35.106766;
-var MAP_START_LON = -106.629181;
-var MAP_START_ZOOM = 17;
+var MAP_START_LAT = 35.16514;
+var MAP_START_LON = -106.66186;
+var MAP_START_ZOOM = 14;
 
 var STUDY_LATITUDE_DEGREES = 35.1;
 
