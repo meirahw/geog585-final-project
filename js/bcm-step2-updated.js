@@ -222,7 +222,7 @@ function addGeoJSONToMap(geojsonData) {
     vegetationFillLayer.addTo(map);
     vegetationOutlineLayer.addTo(map);
 
-    map.fitBounds(vegetationOutlineLayer.getBounds());
+//    map.fitBounds(vegetationOutlineLayer.getBounds());
 
     console.log("GeoJSON loaded and both vegetation layers drawn.");
 
