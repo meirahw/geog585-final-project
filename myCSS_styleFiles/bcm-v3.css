@@ -233,8 +233,6 @@ body {
     line-height: 1.3;
     color: #222;
     clear: both;
-    max-height: 85vh;
-    overflow-y: auto;
 }
 
 /* Fixed width for all legend states */
@@ -277,7 +275,6 @@ body {
 /* Container for legend items */
 .legend-body {
     margin-top: 8px;
-    overflow-y: visible;
     overflow-x: hidden;
 }
 
@@ -312,7 +309,8 @@ body {
 /* Show legend items with scroll when expanded */
 .legend-expanded .legend-body {
     display: block;
-    max-height: 420px;
+    max-height: 70vh;
+    overflow-y: auto;
 }
 
 
