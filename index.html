@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<!--
+    index.html  -  Riparian Ecosystems Map  |  GEOG 585 Final Project
+
+    Left side  (60%) - Leaflet map
+    Right side (40%) - Info panel with polygon data
+-->
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Riparian Ecosystems Map - Middle Rio Grande</title>
+
+
+    <!-- CSS loads in <head> so elements are styled before appearing on screen.
+         bcm.css loads last so our styles can override library defaults. -->
+    <link rel="stylesheet" href="JS_CSS_downloaded_libraries/leaflet.css" />
+    <link rel="stylesheet" href="JS_CSS_downloaded_libraries/bootstrap.css" />
+    <link rel="stylesheet" href="myCSS_styleFiles/bcm-v3.css" />
+
+    <!-- JavaScript loads at the bottom so all HTML elements exist before scripts run.
+         Libraries load before bcm.js since bcm.js depends on them. -->
+    <script src="JS_CSS_downloaded_libraries/jquery-3.7.1.js"></script>
+    <script src="JS_CSS_downloaded_libraries/leaflet-1.9.4.js"></script>
+    <script src="JS_CSS_downloaded_libraries/d3-7.9.0.js"></script>
+    <script src="JS_CSS_downloaded_libraries/bootstrap-5.3.8.js"></script>
+
+    <!-- bcm.js loads last - it uses all the libraries above -->
+    <script src="myJS_scripts/bcm-v3.js"></script>
+    <script src="myJS_scripts/mrw-charts-updated.js"></script>
+
+
+</head>
+
+<body>
+
+    <!-- #main-container: bcm.css uses flexbox here to place map and panel side by side -->
+    <div id="main-container">
+
+        <!-- LEFT: Map (60% width)
+             #map-container needs position:relative so Leaflet controls position correctly.
+             Leaflet draws the interactive map inside #map. -->
+        <div id="map-container">
+            <div id="map"></div>
+            <button type="button" id="about-map-button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#aboutModal">About</button>
+        </div>
+
+        <!-- RIGHT: Info panel (40% width)
+             bcm.js updates the .info-value spans by id when a polygon is clicked. -->
+        <div id="info-panel">
+
+            <!-- Row 1: Header -->
+            <div class="info-row" id="row-header">
+                <span class="header-title">Riparian Ecosystems Info Panel</span>
+                <span class="header-subtitle">Middle Rio Grande</span>
+            </div>
+
+            <!-- Row 2: Vegetation community name -->
+            <div class="info-row" id="row-name">
+                <span class="info-label">Vegetation Type</span>
+                <span class="info-value" id="info-name">
+                    &larr; Click a polygon on the map to see details
+                </span>
+            </div>
+
+            <!-- Row 3: Tree cover -->
+            <div class="info-row" id="row-tree">
+                <span class="info-label">Tree Cover</span>
+                <span class="info-value" id="info-tree">--</span>
+            </div>
+
+            <!-- Row 4: Shrub cover -->
+            <div class="info-row" id="row-shrub">
+                <span class="info-label">Shrub Cover</span>
+                <span class="info-value" id="info-shrub">--</span>
+            </div>
+
+            <!-- Row 5: Herbaceous cover -->
+            <div class="info-row" id="row-herb">
+                <span class="info-label">Herbaceous Cover</span>
+                <span class="info-value" id="info-herb">--</span>
+            </div>
+
+            <!-- Row 6: Area in acres -->
+            <div class="info-row" id="row-acres">
+                <span class="info-label">Area</span>
+                <span class="info-value" id="info-acres">--</span>
+            </div>
+
+            <!-- Row 7: ET trend chart
+                 D3 draws an SVG chart inside #et-chart when a polygon is clicked.
+                 The placeholder div is replaced by the chart at that point. -->
+            <div class="info-row" id="row-et">
+                <span class="info-label">ET Trend (2013-2024)</span>
+                <div id="et-chart">
+                    <div class="et-placeholder">
+                        Select a polygon to view its ET trend
+                    </div>
+                    <div class="et-tooltip"> </div>
+
+
+                </div>
+            </div>
+
+
+        </div><!-- end #info-panel -->
+
+    </div><!-- end #main-container -->
+
+ <!-- Reference: Bootstrap Modal docs
+   https://getbootstrap.com/docs/5.3/components/modal/
+   Used for Bootstrap 5 modal open/close behavior and data attributes. -->
+    
+<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+<div class="modal-header">
+    <h4 class="modal-title" id="aboutModalLabel">About This Project</h4>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+
+            <div class="modal-body">
+                <h4>About the project</h4>
+                <p>
+                    This web map app helps users explore riparian ecosystem patterns in the Middle Rio Grande study area.
+                    Users can click polygons to view vegetation cover, area, and ET trends, and can switch the map display
+                    between vegetation community, tree cover, shrub cover, and herbaceous cover.
+                </p>
+
+                <h4>About the team</h4>
+                <p>
+                    Team member:
+                    <a href="https://armandhammer.github.io/" target="_blank">Ben Garland</a>
+                    (bengarland@unm.edu)
+                </p>
+                <p>
+                    Team member:
+                    <a href="https://corrie-gonzalez.github.io/" target="_blank">Corrie Gonzalez</a>
+                    (cdreas88@unm.edu)
+                </p>
+                <p>
+                    Team member:
+                    <a href="https://meirahw.github.io/" target="_blank">Meirah Williamson</a>
+                    (meirahw@unm.edu)
+                </p>
+                <p>
+                    Project advisor:
+                    <a href="https://www.lipingyang.org" target="_blank">Dr. Liping Yang</a>
+                    (course instructor of GEOG 485L/585L Interactive Web Mapping)
+                </p>
+
+                <h4>Acknowledgements</h4>
+                <p>
+                    Dataset source:
+                    <a href="https://rgis.unm.edu/" target="_blank">RGIS at UNM</a>
+                </p>
+                <p>
+                    Examples and libraries:
+                    <a href="https://leafletjs.com/" target="_blank">Leaflet</a>,
+                    <a href="https://getbootstrap.com/docs/3.4/javascript/#modals" target="_blank">Bootstrap Modal Plugin</a>,
+                    <a href="https://d3js.org/" target="_blank">D3.js</a>
+                </p>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
