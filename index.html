@@ -4,10 +4,6 @@
 
     Left side  (60%) - Leaflet map
     Right side (40%) - Info panel with polygon data
-
-    Connected files:
-      css/bcm.css  - layout and styles (will use -v1, -v2, etc until finished)
-      js/bcm.js    - all interactive behavior (will use -step1, -step2, etc until finished)
 -->
 <html>
 
@@ -20,20 +16,20 @@
 
     <!-- CSS loads in <head> so elements are styled before appearing on screen.
          bcm.css loads last so our styles can override library defaults. -->
-    <link rel="stylesheet" href="css/leaflet.css" />
-    <link rel="stylesheet" href="css/bootstrap.css" />
-    <link rel="stylesheet" href="css/bcm-v2.css" />
+    <link rel="stylesheet" href="JS_CSS_downloaded_libraries/leaflet.css" />
+    <link rel="stylesheet" href="JS_CSS_downloaded_libraries/bootstrap.css" />
+    <link rel="stylesheet" href="myCSS_styleFiles/bcm-v3.css" />
 
     <!-- JavaScript loads at the bottom so all HTML elements exist before scripts run.
          Libraries load before bcm.js since bcm.js depends on them. -->
-    <script src="js/jquery.js"></script>
-    <script src="js/leaflet.js"></script>
-    <script src="js/d3.v7.js"></script>
-    <script src="js/bootstrap.js"></script>
+    <script src="JS_CSS_downloaded_libraries/jquery.js"></script>
+    <script src="JS_CSS_downloaded_libraries/leaflet.js"></script>
+    <script src="JS_CSS_downloaded_libraries/d3.v7.js"></script>
+    <script src="JS_CSS_downloaded_libraries/bootstrap.js"></script>
 
     <!-- bcm.js loads last - it uses all the libraries above -->
-    <script src="js/bcm-step3.js"></script>
-    <script src="js/mrw-charts-updated.js"></script>
+    <script src="myJS_scripts/bcm-step3.js"></script>
+    <script src="myJS_scripts/mrw-charts-updated.js"></script>
 
 
 </head>
