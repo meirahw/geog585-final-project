@@ -123,7 +123,7 @@ function addLayerControl() {
         },
         {
             "Reference Layer Labels": satelliteLayers.labels,
-            "Map Layer": vegetationFillLayer
+            "Data Layer": vegetationFillLayer
         }
     ).addTo(map);
 }
