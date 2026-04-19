@@ -165,7 +165,7 @@ function addZoomToDataControl() {
     zoomToDataControl.addTo(map);
 }
 
-/* COLOR HELPERS */
+/* VEG COMMUNITY COLORS */
 
 function getColorPalette() {
     return [
@@ -222,6 +222,8 @@ function getVegetationColor(name) {
     return vegetationColorMap[name] || "#cccccc";
 }
 
+/* TREE COVER COLORS */
+
 function getTreeCoverColor(value) {
     if (value >= 75) {
         return "#00441b";
@@ -238,6 +240,8 @@ function getTreeCoverColor(value) {
     }
 }
 
+/* SHRUB COVER COLORS */
+
 function getShrubCoverColor(value) {
     if (value >= 75) {
         return "#7f2704";
@@ -253,6 +257,8 @@ function getShrubCoverColor(value) {
         return "#fff5eb";
     }
 }
+
+/* HERBACEOUS COVER COLORS */
 
 function getHerbCoverColor(value) {
     if (value >= 75) {
