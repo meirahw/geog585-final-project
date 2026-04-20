@@ -154,7 +154,7 @@ function addZoomToDataControl() {
             button.addEventListener("click", function () {
                 if (vegetationFillLayer) {
                     map.fitBounds(vegetationFillLayer.getBounds(), {
-                        padding: [20, 20]
+                        padding: [5, 5]
                     });
                 }
             });
