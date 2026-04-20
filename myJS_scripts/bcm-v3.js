@@ -74,12 +74,13 @@ function createLeafletMap() {
     return L.map("map").setView([MAP_START_LAT, MAP_START_LON], MAP_START_ZOOM);
 }
 
+/* Used ChatGPT to help figure out how to look up and add the reference layer to layer on top of satellite imagery*/
 function createSatelliteBasemap() {
     var imagery = L.tileLayer(
         "https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}",
         {
             attribution: "USGS",
-            maxZoom: 19
+            maxZoom: 24
         }
     );
 
@@ -87,7 +88,7 @@ function createSatelliteBasemap() {
         "https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}",
         {
             attribution: "Labels © Esri",
-            maxZoom: 19
+            maxZoom: 24
         }
     );
 
@@ -165,7 +166,8 @@ function addZoomToDataControl() {
     zoomToDataControl.addTo(map);
 }
 
-/* VEG COMMUNITY COLORS */
+/* VEG COMMUNITY COLORS 
+   * Used ChatGPT to assign a color pallette based on number of different community types and to help write the function */
 
 function getColorPalette() {
     return [
