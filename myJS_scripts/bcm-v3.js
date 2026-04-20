@@ -80,7 +80,7 @@ function createSatelliteBasemap() {
         "https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}",
         {
             attribution: "USGS",
-            maxZoom: 24
+            maxZoom: 20
         }
     );
 
@@ -88,7 +88,7 @@ function createSatelliteBasemap() {
         "https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}",
         {
             attribution: "Labels © Esri",
-            maxZoom: 24
+            maxZoom: 20
         }
     );
 
