@@ -120,7 +120,7 @@ function addLayerControl() {
     layerControl = L.control.layers(
         {
             "Satellite": satelliteLayers.imagery,
-            "Simple Map": simpleLayer
+            "OpenStreetMap": simpleLayer
         },
         {
             "Reference Layer Labels": satelliteLayers.labels,
@@ -166,8 +166,11 @@ function addZoomToDataControl() {
     zoomToDataControl.addTo(map);
 }
 
+
+
+
 /* VEG COMMUNITY COLORS 
-   * Used ChatGPT to assign a color pallette based on number of different community types and to help write the function */
+   ** Used ChatGPT to assign a color pallette based on number of different community types and to help write the function */
 
 function getColorPalette() {
     return [
@@ -191,6 +194,8 @@ function getColorPalette() {
         "#a6cee3"
     ];
 }
+
+
 
 /* Reference: Leaflet "Interactive Choropleth Map"
    https://leafletjs.com/examples/choropleth/
@@ -377,6 +382,7 @@ function loadGeoJSONFile() {
 
 
 /* LEGEND */
+/* Used ChatGPT to help build legend pop up function*/
 
 function buildLegendItemsHtml() {
     var html = '';
