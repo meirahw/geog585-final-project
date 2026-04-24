@@ -150,6 +150,7 @@ body {
 
 /* ET chart row (larger to fit chart) */
 #row-et {
+    min-width: 0;
     background-color: #f4f4f4;
     color: #333;
     flex: 3;
@@ -167,9 +168,11 @@ body {
 
 /* Container for D3 chart */
 #et-chart {
-    min-width: 450px;
+    width: 100%;
+    min-width: 0;
     flex: 1;
     margin-top: 8px;
+    overflow-x: auto;
 }
 
 
@@ -207,6 +210,8 @@ adding for beta version
 /* Tooltip styling for chart hover values */
 .et-tooltip {
     position: absolute;
+    z-index: 9999;
+    transform: translate(-50%, -100%);
     background: white;
     border: 1px solid #ccc;
     padding: 6px 8px;
@@ -216,7 +221,6 @@ adding for beta version
     pointer-events: none;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
-
 
 /* PART 7: RESPONSIVE LAYOUT */
 

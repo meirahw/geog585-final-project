@@ -615,19 +615,20 @@ function updateInfoPanel(properties) {
    Reference for basic line chart structure (scales, axes, line generator). */
 
 function updateETChart(polygonData) {
+
+    currentETData = polygonData;
+    
     if (
         !polygonData ||
         polygonData.length === 0 ||
         (polygonData[0]["mean"] == 0 && polygonData[1] && isNaN(polygonData[1]["mean"])) ||
         (isNaN(polygonData[0]["mean"]) && polygonData[1] && isNaN(polygonData[1]["mean"]))
     ) {
-        $("#et-chart").html('<div class="et-placeholder">ET data is missing. Select a different polygon to view its ET trends.</div>');
+        $("#et-chart").html('<div class="et-placeholder">ET data is unavailable. Select a different polygon to view its ET trends.</div>');
     } else {
         drawETChart(polygonData);
     }
 }
-
-
 /* STARTUP */
 
 $(document).ready(function () {
