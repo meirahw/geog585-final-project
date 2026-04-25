@@ -43,7 +43,8 @@
              Leaflet draws the interactive map inside #map. -->
         <div id="map-container">
             <div id="map"></div>
-            <button type="button" id="about-map-button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#aboutModal">About</button>
+            <button type="button" id="about-map-button" class="btn btn-secondary btn-sm" data-bs-toggle="modal"
+                data-bs-target="#aboutModal">About</button>
         </div>
 
         <!-- RIGHT: Info panel (40% width)
@@ -92,95 +93,134 @@
                  D3 draws an SVG chart inside #et-chart when a polygon is clicked.
                  The placeholder div is replaced by the chart at that point. -->
             <div class="info-row" id="row-et">
-                <span class="info-label">ET Trend (2013-2024)</span>
-                <div id="et-chart">
-                   <!-- 
-                    Adding this for Beta Version Still working
-                    <button type="button" id="about-ET-button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#aboutModal">About</button>-->
+
+                <div class="et-label-row">
+                    <span class="info-label">ET Trend (2013-2024)</span>
+
+                    <button id="about-et-button" class="btn btn-sm btn-secondary about-btn" type="button"
+                        data-bs-toggle="modal" data-bs-target="#about-et-modal">
+                        ?
+                    </button>
+                </div>
+
+                <div id="et-chart-wrapper">
+                    <div id="et-chart"></div>
+
                     <div class="et-placeholder">
                         Select a polygon to view its ET trend
                     </div>
-                    <div class="et-tooltip"> </div>
-
-
                 </div>
+
             </div>
 
+            <div class="modal fade" id="about-et-modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h4 class="modal-title">About this chart</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+
+                        <div class="modal-body">
+                            <p>
+                                This chart shows evapotranspiration (ET) over time,
+                                including mean values and interquartile range (P25–P75).
+                            </p>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                Close
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
 
         </div><!-- end #info-panel -->
 
     </div><!-- end #main-container -->
 
- <!-- Reference: Bootstrap Modal docs
+    <!-- Reference: Bootstrap Modal docs
    https://getbootstrap.com/docs/5.3/components/modal/
    Used for Bootstrap 5 modal open/close behavior and data attributes. -->
-    
-<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
 
-<div class="modal-header">
-    <h4 class="modal-title" id="aboutModalLabel">About This Project</h4>
-    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-</div>
+    <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
 
-            <div class="modal-body">
-                <h4>About the project</h4>
-                <p> This web mapping application allows users to explore riparian ecosystem patterns across the Middle Rio Grande valley in New Mexico. 
-                    Users can click on individual polygons to view vegetation community type, area, and evapotranspiration (ET) trends over time. 
-                    The map also enables users to dynamically change the display to visualize different vegetation characteristics, including community type, 
-                    tree cover, shrub cover, and herbaceous cover. Designed for a broad audience, this tool provides an accessible way to explore riparian
-                     vegetation and water use dynamics across New Mexico at a local scale.
-                </p>
+                <div class="modal-header">
+                    <h4 class="modal-title" id="aboutModalLabel">About This Project</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
 
-                <h4>About the team</h4>
-                <p>
-                    Team member:
-                    <a href="https://armandhammer.github.io/bengarland-site/personal/index.html" target="_blank">Ben Garland</a>
-                    (bengarland@unm.edu)
-                </p>
-                <p>
-                    Team member:
-                    <a href="https://corrie-gonzalez.github.io/" target="_blank">Corrie Gonzalez</a>
-                    (cdreas88@unm.edu)
-                </p>
-                <p>
-                    Team member:
-                    <a href="https://meirahw.github.io/" target="_blank">Meirah Williamson</a>
-                    (meirahw@unm.edu)
-                </p>
-                <p>
-                    Project advisor:
-                    <a href="https://www.lipingyang.org" target="_blank">Dr. Liping Yang</a>
-                    (course instructor of GEOG 485L/585L Interactive Web Mapping)
-                </p>
+                <div class="modal-body">
+                    <h4>About the project</h4>
+                    <p> This web mapping application allows users to explore riparian ecosystem patterns across the
+                        Middle Rio Grande valley in New Mexico.
+                        Users can click on individual polygons to view vegetation community type, area, and
+                        evapotranspiration (ET) trends over time.
+                        The map also enables users to dynamically change the display to visualize different vegetation
+                        characteristics, including community type,
+                        tree cover, shrub cover, and herbaceous cover. Designed for a broad audience, this tool provides
+                        an accessible way to explore riparian
+                        vegetation and water use dynamics across New Mexico at a local scale.
+                    </p>
 
-                <h4>Acknowledgements</h4>
-                <p>
-                    <b>Dataset sources: </b>
+                    <h4>About the team</h4>
+                    <p>
+                        Team member:
+                        <a href="https://armandhammer.github.io/bengarland-site/personal/index.html" target="_blank">Ben
+                            Garland</a>
+                        (bengarland@unm.edu)
+                    </p>
+                    <p>
+                        Team member:
+                        <a href="https://corrie-gonzalez.github.io/" target="_blank">Corrie Gonzalez</a>
+                        (cdreas88@unm.edu)
+                    </p>
+                    <p>
+                        Team member:
+                        <a href="https://meirahw.github.io/" target="_blank">Meirah Williamson</a>
+                        (meirahw@unm.edu)
+                    </p>
+                    <p>
+                        Project advisor:
+                        <a href="https://www.lipingyang.org" target="_blank">Dr. Liping Yang</a>
+                        (course instructor of GEOG 485L/585L Interactive Web Mapping)
+                    </p>
 
-                        <ul>
-                        <li><a href="https://nhnm.unm.edu/riparian/NMRipMap" target="_blank">New Mexico Riparian Habitat Map (NMRipMap)</a></li>
-                        <li>Evapotransipiration values came from models produced from collaborators at New Mexico State University</li>
+                    <h4>Acknowledgements</h4>
+                    <p>
+                        <b>Dataset sources: </b>
+
+                    <ul>
+                        <li><a href="https://nhnm.unm.edu/riparian/NMRipMap" target="_blank">New Mexico Riparian Habitat
+                                Map (NMRipMap)</a></li>
+                        <li>Evapotransipiration values came from models produced from collaborators at New Mexico State
+                            University</li>
                     </ul>
 
-                </p>
+                    </p>
 
-                <p>
-                    Examples and libraries:
-                    <a href="https://leafletjs.com/" target="_blank">Leaflet</a>,
-                    <a href="https://getbootstrap.com/docs/3.4/javascript/#modals" target="_blank">Bootstrap Modal Plugin</a>,
-                    <a href="https://d3js.org/" target="_blank">D3.js</a>
-                </p>
+                    <p>
+                        Examples and libraries:
+                        <a href="https://leafletjs.com/" target="_blank">Leaflet</a>,
+                        <a href="https://getbootstrap.com/docs/3.4/javascript/#modals" target="_blank">Bootstrap Modal
+                            Plugin</a>,
+                        <a href="https://d3js.org/" target="_blank">D3.js</a>
+                    </p>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+
             </div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-
         </div>
     </div>
-</div>
 </body>
 
 </html>

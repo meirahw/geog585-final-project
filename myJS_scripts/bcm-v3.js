@@ -349,7 +349,7 @@ function getOutlineLayerStyle() {
 // Used ChatGPT to make display switching cleaner without reloading data.
 function addGeoJSONToMap(geojsonData) {
     buildVegetationColorMap(geojsonData);
-   
+
     vegetationFillLayer = L.geoJSON(geojsonData, {
         style: getFillLayerStyle,
         interactive: false
@@ -395,8 +395,8 @@ function buildLegendItemsHtml() {
 
             html +=
                 '<div class="legend-item">' +
-                    '<span class="legend-color" style="background:' + color + ';"></span>' +
-                    '<span class="legend-label">' + category + '</span>' +
+                '<span class="legend-color" style="background:' + color + ';"></span>' +
+                '<span class="legend-label">' + category + '</span>' +
                 '</div>';
         });
 
@@ -589,9 +589,11 @@ function showDefaultInfoPanel() {
     $("#info-shrub").text("--");
     $("#info-herb").text("--");
     $("#info-acres").text("--");
-    $("#et-chart").html('<div class="et-placeholder">Select a polygon to view its ET trend</div>');
+    d3.select("#et-chart").html(""); // clear chart only
+    d3.select("#et-chart-wrapper .et-placeholder")
+        .style("display", "flex")
+        .text("Click on a polygon to view evapotranspiration (ET) trends.");
 }
-
 function updateInfoPanel(properties) {
     $("#info-name").text(properties[POLYGON_NAME_FIELD] || "Unknown");
     $("#info-tree").text(formatAsPercent(properties.Tot_Tree_Cov));
@@ -617,14 +619,16 @@ function updateInfoPanel(properties) {
 function updateETChart(polygonData) {
 
     currentETData = polygonData;
-    
+
     if (
         !polygonData ||
         polygonData.length === 0 ||
         (polygonData[0]["mean"] == 0 && polygonData[1] && isNaN(polygonData[1]["mean"])) ||
         (isNaN(polygonData[0]["mean"]) && polygonData[1] && isNaN(polygonData[1]["mean"]))
     ) {
-        $("#et-chart").html('<div class="et-placeholder">ET data is unavailable. Select a different polygon to view its ET trends.</div>');
+        d3.select("#et-chart-wrapper .et-placeholder")
+            .style("display", "flex")
+            .text("ET data is unavailable. Select a different polygon to view its ET trends.");
     } else {
         drawETChart(polygonData);
     }

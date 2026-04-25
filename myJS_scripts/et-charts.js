@@ -1,11 +1,7 @@
 "use strict";
 
 var PATH_CSV = "./data/RipMapET_AllYears_Long_Update_202060406.csv";
-const format = d3.format(".1f");
-
-let currentETData = null;
-// add tooltip
-
+var format = d3.format(".1f");
 
 // load + process data
 var ETDataByPolygon = new Array();
@@ -29,10 +25,12 @@ d3.csv(PATH_CSV, d => ({
 
     // store data
     ETDataByPolygon = grouped;
-
 });
 
 function drawETChart(data) {
+
+    d3.select("#et-chart-wrapper .et-placeholder")
+        .style("display", "none");
 
     // create ET tooltip
     var ETTooltip = d3.select("body")
@@ -44,14 +42,15 @@ function drawETChart(data) {
         .style("opacity", 0);
 
     // mouseover function shows year, mean, p25, and p75
+    // ChatGPT was used to help write 
     var mouseover = function (event, d) {
 
-        const cx = +d3.select(this).attr("cx");
-        const cy = +d3.select(this).attr("cy");
-        const svgRect = this.ownerSVGElement.getBoundingClientRect();
+        var cx = +d3.select(this).attr("cx");
+        var cy = +d3.select(this).attr("cy");
+        var svgRect = this.ownerSVGElement.getBoundingClientRect();
 
-        const left = svgRect.left + window.scrollX + cx;
-        const top = svgRect.top + window.scrollY + cy - 1; // small gap
+        var left = svgRect.left + window.scrollX + cx;
+        var top = svgRect.top + window.scrollY + cy - 1; // small gap
 
         ETTooltip
             .style("opacity", 1)
@@ -59,22 +58,14 @@ function drawETChart(data) {
             .style("top", top + "px")
             .html(`
             <b>Year:</b> ${d.year}<br>
-            <b>Mean:</b> ${d.mean.toFixed(1)} mm<br>
-            <b>P25:</b> ${d.p25.toFixed(1)} mm<br>
-            <b>P75:</b> ${d.p75.toFixed(1)} mm
+            <b>Mean:</b> ${format(d.mean)} mm<br>
+            <b>P25:</b> ${format(d.p25)} mm<br>
+            <b>P75:</b> ${format(d.p75)} mm
         `);
 
         d3.select(this).style("stroke", "black");
     };
-    // mousemove function draws black outline around dots
-    // var mousemove = function (event, d) {
-    //     ETTooltip
-    //         .style("left", (event.pageX + 10) + "px")
-    //         .style("top", (event.pageY - 20) + "px");
-    //     d3.select(this)
-    //         .style("opacity", 1)
-    //         .style("stroke", "black")
-    // }
+
     // tooltip disappears (opacity: 0) and black out
     var mouseleave = function (event, d) {
         ETTooltip
@@ -83,36 +74,33 @@ function drawETChart(data) {
             .style("stroke", "none")
     }
 
-    // clear old chart
-    d3.select("#et-chart").html("");
-
     // select chart and get width of client browser
-    var container = d3.select("#et-chart").node();
+    var container = document.querySelector("#et-chart");
     var containerWidth = container.clientWidth;
     var containerHeight = container.clientHeight;
 
-    // dimensions
-    var margin = { top: 10, right: 40, bottom: 30, left: 40 }
+    var margin = { top: 10, right: 10, bottom: 40, left: 40 };
 
-    // calculate width and height based on margins and client browser
-    var minChartWidth = 500; // tweak this
-    var width = Math.max(containerWidth, minChartWidth) - margin.left - margin.right;
+    var minChartWidth = 300;
+    var width = containerWidth - margin.left - margin.right;
     var height = containerHeight - margin.top - margin.bottom;
+    
+    // clear old chart, if any
+    d3.select("#et-chart").html("");
 
     // svg
     var svg = d3.select("#et-chart")
         .append("svg")
         .attr("width", containerWidth)
-        .attr("height", containerHeight)
+        .attr("height", height + margin.top + margin.bottom)
         .append("g")
-        .attr("transform", `translate(${margin.left},${margin.top})`)
-        .attr("width", Math.max(containerWidth, minChartWidth));
+        .attr("transform", `translate(${margin.left},${margin.top})`);
 
     // scales
     var x = d3.scalePoint()
         .domain(data.map(d => d.year))
         .range([0, width])
-        .padding(0.5);
+        .padding(0.2);
 
     var y = d3.scaleLinear()
         .domain([
@@ -128,7 +116,7 @@ function drawETChart(data) {
         .call(d3.axisBottom(x));
 
     svg.append("g")
-        .call(d3.axisLeft(y).ticks(width / 75));
+        .call(d3.axisLeft(y).ticks(5));
 
     // generators
     var area = d3.area()
@@ -164,27 +152,5 @@ function drawETChart(data) {
         .attr("fill", "steelblue")
         // mouse actions
         .on("mouseover", mouseover)
-        //.on("mousemove", mousemove)
         .on("mouseleave", mouseleave)
 };
-
-let resizeTimeout;
-let lastWidth = null;
-
-window.addEventListener("resize", () => {
-
-    clearTimeout(resizeTimeout);
-
-    resizeTimeout = setTimeout(() => {
-        const container = d3.select("#et-chart").node();
-        if (!container) return;
-
-        const newWidth = container.clientWidth;
-
-        if (currentETData && newWidth !== lastWidth) {
-            lastWidth = newWidth;
-            drawETChart(currentETData);
-        }
-    }, 150);
-
-});
