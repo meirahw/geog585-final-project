@@ -154,6 +154,7 @@ body {
     color: #333;
     flex: 3;
     min-height: 220px;
+    min-width: 100%;
 }
 
 /* Slightly muted label styling in ET section */
