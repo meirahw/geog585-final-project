@@ -39,6 +39,7 @@ function drawETChart(data) {
         .join("div")
         .attr("class", "et-tooltip")
         .style("position", "fixed")
+        .style("opacity", 0)
         .style("display", "none");
 
     // mouseover function shows year, mean, p25, and p75
@@ -54,6 +55,7 @@ function drawETChart(data) {
 
         ETTooltip
             .style("display", "block")
+            .style("opacity", 1)
             .style("left", left + "px")
             .style("top", top + "px")
             .html(`
