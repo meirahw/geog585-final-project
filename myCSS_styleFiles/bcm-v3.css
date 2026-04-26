@@ -172,12 +172,20 @@ body {
     margin-top: 8px;
 }
 
+#et-chart-wrapper {
+    position: relative;
+}
+
 /* Placeholder shown when no data is selected */
 .et-placeholder {
+    position: absolute;
+    top: 8px;
+    left: 0;
+    right: 0;
+    height: 160px;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 160px;
     border: 2px dashed #bbb;
     border-radius: 8px;
     color: #999;
