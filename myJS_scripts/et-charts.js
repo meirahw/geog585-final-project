@@ -38,8 +38,8 @@ function drawETChart(data) {
         .data([null])
         .join("div")
         .attr("class", "et-tooltip")
-        .style("position", "absolute")
-        .style("opacity", 0);
+        .style("position", "fixed")
+        .style("display", "none");
 
     // mouseover function shows year, mean, p25, and p75
     // ChatGPT was used to help write 
@@ -53,15 +53,15 @@ function drawETChart(data) {
         var top = svgRect.top + window.scrollY + cy - 1; // small gap
 
         ETTooltip
-            .style("opacity", 1)
+            .style("display", "block")
             .style("left", left + "px")
             .style("top", top + "px")
             .html(`
-            <b>Year:</b> ${d.year}<br>
-            <b>Mean:</b> ${format(d.mean)} mm<br>
-            <b>P25:</b> ${format(d.p25)} mm<br>
-            <b>P75:</b> ${format(d.p75)} mm
-        `);
+        <b>Year:</b> ${d.year}<br>
+        <b>Mean:</b> ${format(d.mean)} mm<br>
+        <b>P25:</b> ${format(d.p25)} mm<br>
+        <b>P75:</b> ${format(d.p75)} mm
+    `);
 
         d3.select(this).style("stroke", "black");
     };
@@ -84,7 +84,7 @@ function drawETChart(data) {
     var minChartWidth = 300;
     var width = containerWidth - margin.left - margin.right;
     var height = containerHeight - margin.top - margin.bottom;
-    
+
     // clear old chart, if any
     d3.select("#et-chart").html("");
 
