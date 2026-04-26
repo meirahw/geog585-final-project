@@ -170,10 +170,12 @@ body {
     min-width: 450px;
     height: 180px;
     margin-top: 8px;
+    overflow: hidden;
 }
 
 #et-chart-wrapper {
     position: relative;
+    overflow: hidden;
 }
 
 /* Placeholder shown when no data is selected */
