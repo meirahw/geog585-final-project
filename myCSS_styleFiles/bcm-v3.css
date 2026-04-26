@@ -168,7 +168,7 @@ body {
 /* Container for D3 chart */
 #et-chart {
     min-width: 450px;
-    flex: 1;
+    height: 180px;
     margin-top: 8px;
 }
 
