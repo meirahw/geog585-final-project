@@ -50,6 +50,7 @@ body {
 /* Right-side panel that displays selected polygon info */
 #info-panel {
     width: 40%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     overflow-y: auto;
@@ -64,7 +65,7 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     padding: 10px 24px;
-    flex: 0 0 auto;
+    flex: 1 1 0;
     min-height: 60px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
@@ -151,13 +152,10 @@ body {
 /* ET chart row (larger to fit chart) */
 #row-et {
     padding-top: 0;
-    min-width: 0;
-    min-height: 300px;
+    min-width: 100%;
     background-color: #f4f4f4;
     color: #333;
-    flex:  0 0 auto;
-    min-height: 220px;
-    min-width: 100%;
+    flex: 2 1 0;
 }
 
 /* Slightly muted label styling in ET section */
