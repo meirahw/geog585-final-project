@@ -22,6 +22,7 @@ body {
     height: 100vh;
 }
 
+
 /* PART 3: MAP AREA */
 
 /* Container that holds the Leaflet map */
@@ -54,6 +55,7 @@ body {
     overflow-y: auto;
     overflow-x: hidden;
 }
+
 
 /* PART 5: INFO PANEL ROWS */
 
@@ -161,9 +163,19 @@ body {
     color: #555;
 }
 
+
 /* PART 6: ET CHART */
 
-/* Container for D3 chart */
+/* Container for D3 chart and placeholder */
+#et-chart-wrapper {
+    position: relative;
+    overflow-x: hidden; /*auto*/
+    overflow-y: hidden;
+    height: auto;
+    box-sizing: border-box;
+}
+
+/* D3 chart */
 #et-chart {
     min-width: 400px;
     height: 180px;
@@ -173,19 +185,9 @@ body {
 #et-chart svg {
     display: block;
     max-width: 100%;
-
 }
 
-#et-chart-wrapper {
-    position: relative;
-    overflow-x: hidden; /*auto*/
-    overflow-y: hidden;
-    height: auto;
-    box-sizing: border-box;
-}
-
-/* scrollbar for chart ONLY, 
-removed for now because other code has mostly fixed it, although the scrollbar does appear for the no data placeholder...*/
+/* scrollbar for chart ONLY */
 #et-chart-wrapper.has-chart {
     overflow-x: auto;
 }
@@ -223,15 +225,16 @@ removed for now because other code has mostly fixed it, although the scrollbar d
     z-index: 9999;
 }
 
+/* about ET Chart button */
 #about-et-button {
     background-color: #cce5df;
     color: black;
     border: 1px solid steelblue;
-
     border-radius: 4px;
     font-size: 12px;
 }
 
+/* about button changes color when hovering */
 #about-et-button:hover {
     background-color: steelblue;
     color: white;
