@@ -169,10 +169,13 @@ body {
 /* Container for D3 chart and placeholder */
 #et-chart-wrapper {
     position: relative;
-    overflow-x: hidden; /*auto*/
+    overflow-x: hidden;
     overflow-y: hidden;
     height: auto;
     box-sizing: border-box;
+    padding-bottom: 30px;
+    scrollbar-gutter: stable both-edges;
+
 }
 
 /* D3 chart */

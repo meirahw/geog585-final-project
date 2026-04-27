@@ -127,20 +127,21 @@ function drawETChart(data) {
     //var container = document.querySelector("#et-chart");
     var container = document.querySelector("#et-chart-wrapper");
 
-    var containerWidth = Math.floor(container.clientWidth);
-    var containerHeight = container.clientHeight;
+    var containerWidth = container.getBoundingClientRect().width;
+    var containerHeight = container.getBoundingClientRect().height;
 
-    var margin = { top: 10, right: 10, bottom: 40, left: 40 };
+    var margin = { top: 10, right: 40, bottom: 40, left: 50};
 
-    var minChartWidth = 350;
-    var width = Math.max(minChartWidth, containerWidth - margin.left - margin.right); 
-    var height = containerHeight - margin.top - margin.bottom;
+    var minChartWidth = 300;
+    var width = Math.max(minChartWidth, containerWidth - margin.left - margin.right - 10);
+    var width = Math.max(minChartWidth, containerWidth - margin.left - margin.right);
+    var height = containerHeight - margin.top - margin.bottom - 20;
 
     // svg
     var svg = d3.select("#et-chart")
         .append("svg")
         .attr("width", width + margin.left + margin.right)
-        .attr("height", containerHeight)
+        .attr("height", height + margin.top + margin.bottom)
         .append("g")
         .attr("transform", `translate(${margin.left},${margin.top})`);
 
@@ -161,10 +162,32 @@ function drawETChart(data) {
     // axes
     svg.append("g")
         .attr("transform", `translate(0,${height})`)
-        .call(d3.axisBottom(x));
+        .call(d3.axisBottom(x))
+        .selectAll("text")
+        .style("font-size", "10px");
 
     svg.append("g")
-        .call(d3.axisLeft(y).ticks(5));
+        .call(d3.axisLeft(y).ticks(5))
+        .selectAll("text")
+        .style("font-size", "10px");
+
+    svg.append("text")
+        .attr("class", "x label")
+        .attr("text-anchor", "middle")
+        .attr("x", width / 2)
+        .attr("y", height + 25)
+        .attr("dy", "0.8em")
+        .text("Years")
+        .style("font-size", "10px");
+
+    svg.append("text")
+        .attr("class", "y label")
+        .attr("text-anchor", "middle")
+        .attr("transform", "rotate(-90)")
+        .attr("x", -(height / 2))
+        .attr("y", -(margin.left) + 8)
+        .text("ET (mm)")
+        .style("font-size", "10px");
 
     // generators
     var area = d3.area()
