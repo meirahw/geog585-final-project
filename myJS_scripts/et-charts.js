@@ -42,22 +42,11 @@ function drawETChart(data) {
         .style("opacity", 0)
         .style("display", "none");
 
-    // mouseover function shows year, mean, p25, and p75
-    // ChatGPT was used to help write 
+
     var mouseover = function (event, d) {
-
-        var cx = +d3.select(this).attr("cx");
-        var cy = +d3.select(this).attr("cy");
-        var svgRect = this.ownerSVGElement.getBoundingClientRect();
-
-        var left = svgRect.left + window.scrollX + cx;
-        var top = svgRect.top + window.scrollY + cy - 1; // small gap
-
         ETTooltip
             .style("display", "block")
             .style("opacity", 1)
-            .style("left", left + "px")
-            .style("top", top + "px")
             .html(`
         <b>Year:</b> ${d.year}<br>
         <b>Mean:</b> ${format(d.mean)} mm<br>
@@ -68,7 +57,65 @@ function drawETChart(data) {
         d3.select(this).style("stroke", "black");
     };
 
-    // tooltip disappears (opacity: 0) and black out
+    // had a mouseover event that worked well everywhere but the edges (would get cut off at the bottom/right)
+    // used ChatGPT to help implement "preferred" location for tooltip
+    var mousemove = function (event) {
+
+        var tooltip = ETTooltip.node();
+
+        var tooltipWidth = tooltip.offsetWidth || 160;
+        var tooltipHeight = tooltip.offsetHeight || 80;
+
+        var offset = 15;
+
+        var x = event.clientX;
+        var y = event.clientY;
+
+        // available space (right, left, bottom, top)
+        var spaceRight = window.innerWidth - x;
+        var spaceLeft = x;
+        var spaceBottom = window.innerHeight - y;
+        var spaceTop = y;
+
+        // default preferred quadrant: bottom-right
+        var left, top;
+
+        // decide horizontal direction
+        var placeRight = spaceRight > tooltipWidth + offset;
+        var placeBottom = spaceBottom > tooltipHeight + offset || spaceBottom > spaceTop;
+
+        // quadrant logic (4-way decision)
+        if (placeRight && placeBottom) {
+            // bottom-right
+            left = x + offset;
+            top = y + offset;
+        }
+        else if (!placeRight && placeBottom) {
+            // bottom-left
+            left = x - tooltipWidth - offset;
+            top = y + offset;
+        }
+        else if (placeRight && !placeBottom) {
+            // top-right
+            left = x + offset;
+            top = y - tooltipHeight - offset;
+        }
+        else {
+            // top-left
+            left = x - tooltipWidth - offset;
+            top = y - tooltipHeight - offset;
+        }
+
+        // add constraint so that the tooltip doesn't get too close to the edges
+        left = Math.max(10, Math.min(left, window.innerWidth - tooltipWidth - 10));
+        top = Math.max(10, Math.min(top, window.innerHeight - tooltipHeight - 10));
+
+        ETTooltip
+            .style("left", left + "px")
+            .style("top", top + "px");
+    };
+
+    // tooltip disappears when mouse leaves the circle
     var mouseleave = function (event, d) {
         ETTooltip
             .style("opacity", 0)
@@ -77,24 +124,23 @@ function drawETChart(data) {
     }
 
     // select chart and get width of client browser
-    var container = document.querySelector("#et-chart");
-    var containerWidth = container.clientWidth;
+    //var container = document.querySelector("#et-chart");
+    var container = document.querySelector("#et-chart-wrapper");
+
+    var containerWidth = Math.floor(container.clientWidth);
     var containerHeight = container.clientHeight;
 
     var margin = { top: 10, right: 10, bottom: 40, left: 40 };
 
-    var minChartWidth = 300;
-    var width = containerWidth - margin.left - margin.right;
+    var minChartWidth = 350;
+    var width = Math.max(minChartWidth, containerWidth - margin.left - margin.right); 
     var height = containerHeight - margin.top - margin.bottom;
-
-    // clear old chart, if any
-    d3.select("#et-chart").html("");
 
     // svg
     var svg = d3.select("#et-chart")
         .append("svg")
-        .attr("width", containerWidth - 4)
-        .attr("height", height + margin.top + margin.bottom)
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", containerHeight)
         .append("g")
         .attr("transform", `translate(${margin.left},${margin.top})`);
 
@@ -154,5 +200,15 @@ function drawETChart(data) {
         .attr("fill", "steelblue")
         // mouse actions
         .on("mouseover", mouseover)
+        .on("mousemove", mousemove)
         .on("mouseleave", mouseleave)
-};
+
+}
+
+// original event listener (https://www.w3schools.com/JsrEF/event_onresize.asp) wasn't working exactly how I wanted,
+// used ChatGPT which suggested the requestAnimationFrame (https://www.w3schools.com/Jsref/met_win_requestanimationframe.asp)
+window.addEventListener("resize", () => {
+    requestAnimationFrame(() => {
+        if (currentETData) updateETChart(currentETData);
+    });
+});

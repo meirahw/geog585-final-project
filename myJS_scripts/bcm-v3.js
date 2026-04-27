@@ -589,7 +589,6 @@ function showDefaultInfoPanel() {
     $("#info-shrub").text("--");
     $("#info-herb").text("--");
     $("#info-acres").text("--");
-    d3.select("#et-chart").html(""); // clear chart only
     d3.select("#et-chart-wrapper .et-placeholder")
         .style("display", "flex")
         .text("Click on a polygon to view evapotranspiration (ET) trends.");
@@ -618,19 +617,31 @@ function updateInfoPanel(properties) {
 
 function updateETChart(polygonData) {
 
+    // was trying to add a window resize renderer but couldn't figure it out... keeping for now
     currentETData = polygonData;
 
+    // clear old chart
+    d3.select("#et-chart").selectAll("*").remove();
+
+    // find polygons without et chart data
     if (
         !polygonData ||
         polygonData.length === 0 ||
         (polygonData[0]["mean"] == 0 && polygonData[1] && isNaN(polygonData[1]["mean"])) ||
         (isNaN(polygonData[0]["mean"]) && polygonData[1] && isNaN(polygonData[1]["mean"]))
     ) {
+        // show placeholder chart with the following text
         d3.select("#et-chart-wrapper .et-placeholder")
             .style("display", "flex")
             .text("ET data is unavailable. Select a different polygon to view its ET trends.");
+
+        d3.select("#et-chart-wrapper")
+            .classed("has-chart", false);
+        // draw chart if there is data
     } else {
         drawETChart(polygonData);
+        d3.select("#et-chart-wrapper")
+            .classed("has-chart", true);
     }
 }
 /* STARTUP */
