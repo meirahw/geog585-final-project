@@ -531,7 +531,6 @@ function updateFillLayerColors() {
     }
 }
 
-
 /* POLYGON CLICK */
 
 // Selection worked, but could leave multiple polygons highlighted.
@@ -572,7 +571,6 @@ function attachClickListener(feature, layer) {
     layer.on({ click: handlePolygonClick });
 }
 
-
 /* INFO PANEL */
 
 function formatAsPercent(value) {
@@ -608,7 +606,6 @@ function updateInfoPanel(properties) {
     );
 }
 
-
 /* ET CHART */
 
 /* Reference: D3 Getting Started (Line Chart Pattern)
@@ -617,7 +614,7 @@ function updateInfoPanel(properties) {
 
 function updateETChart(polygonData) {
 
-    // was trying to add a window resize renderer but couldn't figure it out... keeping for now
+    // for window resizer
     currentETData = polygonData;
 
     // clear old chart
@@ -635,9 +632,32 @@ function updateETChart(polygonData) {
             .style("display", "flex")
             .text("ET data is unavailable. Select a different polygon to view its ET trends.");
 
-        // draw chart if there is data
+        // removes scrollbar
+        // https://www.geeksforgeeks.org/javascript/d3-js-selection-classed-function/
+        d3.select("#et-chart-wrapper")
+            .classed("has-chart", false);
+
+        // resets scroll all the way to the left
+        document.querySelector("#et-chart-wrapper").scrollTo({
+            left: 0,
+            behavior: "smooth"
+        });
+        
+        
     } else {
+        // draw chart if there is data
         drawETChart(polygonData);
+
+        // adds scrollbar
+        // https://www.geeksforgeeks.org/javascript/d3-js-selection-classed-function/
+        d3.select("#et-chart-wrapper")
+            .classed("has-chart", true);
+
+        // resets scroll    
+        document.querySelector("#et-chart-wrapper").scrollTo({
+            left: 0,
+            behavior: "smooth"
+        });
     }
 }
 /* STARTUP */

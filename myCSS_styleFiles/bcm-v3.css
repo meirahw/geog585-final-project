@@ -178,10 +178,16 @@ body {
 
 #et-chart-wrapper {
     position: relative;
-    overflow-x: auto;
+    overflow-x: hidden; /*auto*/
     overflow-y: hidden;
     height: auto;
     box-sizing: border-box;
+}
+
+/* scrollbar for chart ONLY, 
+removed for now because other code has mostly fixed it, although the scrollbar does appear for the no data placeholder...*/
+#et-chart-wrapper.has-chart {
+    overflow-x: auto;
 }
 
 /* Placeholder shown when no data is selected */
