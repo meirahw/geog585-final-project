@@ -635,13 +635,9 @@ function updateETChart(polygonData) {
             .style("display", "flex")
             .text("ET data is unavailable. Select a different polygon to view its ET trends.");
 
-        d3.select("#et-chart-wrapper")
-            .classed("has-chart", false);
         // draw chart if there is data
     } else {
         drawETChart(polygonData);
-        d3.select("#et-chart-wrapper")
-            .classed("has-chart", true);
     }
 }
 /* STARTUP */

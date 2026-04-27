@@ -161,7 +161,6 @@ body {
     color: #555;
 }
 
-
 /* PART 6: ET CHART */
 
 /* Container for D3 chart */
@@ -179,14 +178,10 @@ body {
 
 #et-chart-wrapper {
     position: relative;
-    overflow-x: hidden;
+    overflow-x: auto;
     overflow-y: hidden;
     height: auto;
     box-sizing: border-box;
-}
-
-#et-chart-wrapper.has-chart {
-    overflow-x: auto;
 }
 
 /* Placeholder shown when no data is selected */
