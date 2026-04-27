@@ -130,12 +130,11 @@ function drawETChart(data) {
     var containerWidth = container.getBoundingClientRect().width;
     var containerHeight = container.getBoundingClientRect().height;
 
-    var margin = { top: 10, right: 40, bottom: 40, left: 50};
+    var margin = { top: 10, right: 20, bottom: 60, left: 50 };
 
     var minChartWidth = 300;
-    var width = Math.max(minChartWidth, containerWidth - margin.left - margin.right - 10);
     var width = Math.max(minChartWidth, containerWidth - margin.left - margin.right);
-    var height = containerHeight - margin.top - margin.bottom - 20;
+    var height = containerHeight - margin.top - margin.bottom;
 
     // svg
     var svg = d3.select("#et-chart")
@@ -178,7 +177,8 @@ function drawETChart(data) {
         .attr("y", height + 25)
         .attr("dy", "0.8em")
         .text("Years")
-        .style("font-size", "10px");
+        .style("font-size", "10px")
+        .style("font-weight", "bold");
 
     svg.append("text")
         .attr("class", "y label")
@@ -187,7 +187,9 @@ function drawETChart(data) {
         .attr("x", -(height / 2))
         .attr("y", -(margin.left) + 8)
         .text("ET (mm)")
-        .style("font-size", "10px");
+        .style("font-size", "10px")
+        .style("font-weight", "bold");
+
 
     // generators
     var area = d3.area()

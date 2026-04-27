@@ -173,9 +173,6 @@ body {
     overflow-y: hidden;
     height: auto;
     box-sizing: border-box;
-    padding-bottom: 30px;
-    scrollbar-gutter: stable both-edges;
-
 }
 
 /* D3 chart */
