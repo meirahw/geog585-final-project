@@ -65,7 +65,7 @@ body {
     flex-direction: column;
     justify-content: center;
     padding: 14px 24px;
-    flex: 0 0 auto;
+    flex: 1;
     min-height: 60px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
@@ -153,8 +153,8 @@ body {
 #row-et {
     background-color: #f4f4f4;
     color: #333;
-    flex: 0 0 auto;
-    height: auto;
+    flex: 3;
+    min-height: 220px;
     min-width: 100%;
 }
 
