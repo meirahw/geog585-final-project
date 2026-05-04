@@ -377,13 +377,13 @@ body {
 #about-map-button {
     position: absolute;
     right: 15px;
-    bottom: 15px;
+    bottom: 40px;
     z-index: 1000;
     display: block;
     background-color: white;
     color: #333;
     border: 1px solid #999;
-    padding: 6px 12px;
+    padding: 6px 10px;
 }
 
 /* Hover effect for about button */

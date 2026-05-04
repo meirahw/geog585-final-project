@@ -44,7 +44,7 @@
         <div id="map-container">
             <div id="map"></div>
             <button type="button" id="about-map-button" class="btn btn-secondary btn-sm" data-bs-toggle="modal"
-                data-bs-target="#aboutModal">About</button>
+                data-bs-target="#aboutModal"><h5>About This Map</h5></button>
         </div>
 
         <!-- RIGHT: Info panel (40% width)
@@ -57,7 +57,7 @@
                     <button id="about-riparian-map-button" class="btn btn-sm btn-secondary about-btn" type="button"
                         data-bs-toggle="modal" data-bs-target="#about-riparian-map-modal">
                         ?
-                </button>
+                    </button>
                 </span>
                 <span class="header-subtitle">Middle Rio Grande</span>
 
@@ -127,7 +127,7 @@
              Modal for about-Riparian-Map-button
              =======================================================================================-->
 
- <div class="modal fade" id="about-riparian-map-modal" tabindex="-1" role="dialog">
+            <div class="modal fade" id="about-riparian-map-modal" tabindex="-1" role="dialog">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
 
@@ -139,9 +139,12 @@
                         <div class="modal-body">
                             <p>
                                 Vegetation community type polygons come from the
-                                <a href="https://nhnm.unm.edu/riparian/NMRipMap" target="_blank"> New Mexico Riparian Habitat
-                                    Map (NMRipMap).</a> If you are interested in learning more about NMRipMap vegetation community types,
-                                check out the <a href="data/NMRipMap_Version2.0Plus_AnnotatedLegend.pdf" target="_blank">
+                                <a href="https://nhnm.unm.edu/riparian/NMRipMap" target="_blank"> New Mexico Riparian
+                                    Habitat
+                                    Map (NMRipMap).</a> If you are interested in learning more about NMRipMap vegetation
+                                community types,
+                                check out the <a href="data/NMRipMap_Version2.0Plus_AnnotatedLegend.pdf"
+                                    target="_blank">
                                     Annotated Legend</a>
                                 <br>
                                 <br>
@@ -155,12 +158,15 @@
                                 <br>
                                 <br>
                                 <i>Note: Vegetation community type polygons are based on 2022 satellite imagery, and
-                                    vegetation may have changed in some areas since classification. Additionally, percent
-                                    cover by stratum is based on dominant vegetation height and does not capture understory
-                                    vegetation beneath taller canopies. These data may not reflect current conditions and should
+                                    vegetation may have changed in some areas since classification. Additionally,
+                                    percent
+                                    cover by stratum is based on dominant vegetation height and does not capture
+                                    understory
+                                    vegetation beneath taller canopies. These data may not reflect current conditions
+                                    and should
                                     be used for general context.
                                 </i>
-                                  
+
                             </p>
                         </div>
 
@@ -169,136 +175,153 @@
                                 Close
                             </button>
                         </div>
+                    </div>
+                    </div>
+                    </div>
 
         <!-- ========================================================================================
          Modal for about-ET-button
         ======================================================================================-->
 
+                        <div class="modal fade" id="about-et-modal" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
 
-            <div class="modal fade" id="about-et-modal" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">About this chart</h4>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
 
-                        <div class="modal-header">
-                            <h4 class="modal-title">About this chart</h4>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    <div class="modal-body">
+                                        <p>
+                                            Evapotranspiration (ET) represents the amount of water transferred from the
+                                            land surface to the atmosphere through evaporation and plant transpiration.
+                                            In this tool, ET is shown in mm and reflects the mean ET per unit area
+                                            (30 × 30 m pixels) within each polygon. 
+                                            <br>
+                                            <br>
+                                            ET values are derived from modeled datasets developed by project
+                                            collaborators
+                                            at NMSU’s Department of Civil Engineering, using satellite-based remote
+                                            sensing
+                                            and energy balance modeling approaches. 
+                                            <br>
+                                            <br>
+                                            Selecting a polygon updates the chart to reflect mean ET (blue points) for
+                                            each year,
+                                            the modeled datasets are available (2013-2024). Additionally, the light blue
+                                            bands
+                                            surrounding the trend lines represent the 25th and 75h percentiles for each
+                                            of the data points.
+                                            <br>
+                                            <br>
+                                            <i>Note: These values are estimates based on modeled ET data and should be
+                                                interpreted as approximate.
+                                                Results may include uncertainty due to model assumptions, input data
+                                                limitations, and spatial variability.</i>
+                                        </p>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                            Close
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="modal-body">
-                            <p>
-                                Evapotranspiration (ET) represents the amount of water transferred from the 
-                                land surface to the atmosphere through evaporation and plant transpiration. 
-                                In this tool, ET is shown in mm and reflects the mean ET per unit area 
-                                (30 × 30 m pixels) within each polygon. 
-                                <br>
-                                <br>
-                                ET values are derived from modeled datasets developed by project collaborators
-                                 at NMSU’s Department of Civil Engineering, using satellite-based remote sensing 
-                                 and energy balance modeling approaches. 
-                                <br>
-                                <br>
-                                Selecting a polygon updates the chart to reflect mean ET (blue points) for each year, 
-                                the modeled datasets are available (2013-2024). Additionally, the light blue bands 
-                                surrounding the trend lines represent the 25th and 75h percentiles for each of the data points.
-                                <br>
-                                <br>
-                                <i>Note: These values are estimates based on modeled ET data and should be interpreted as approximate. 
-                                Results may include uncertainty due to model assumptions, input data limitations, and spatial variability.</i>
-                            </p>
-                        </div>
+                    </div><!-- end #info-panel -->
 
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                Close
-                            </button>
-                        </div>
+                </div><!-- end #main-container -->
 
-                    </div>
-                </div>
-            </div>
-
-        </div><!-- end #info-panel -->
-
-    </div><!-- end #main-container -->
-
-    <!-- Reference: Bootstrap Modal docs
+                <!-- Reference: Bootstrap Modal docs
    https://getbootstrap.com/docs/5.3/components/modal/
    Used for Bootstrap 5 modal open/close behavior and data attributes. -->
 
-    <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
+                <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
 
-                <div class="modal-header">
-                    <h4 class="modal-title" id="aboutModalLabel">About This Project</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="aboutModalLabel">About This Project</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+
+                            <div class="modal-body">
+                                <h4>About the project</h4>
+                                <p> This web mapping application allows users to explore riparian ecosystem patterns
+                                    across the
+                                    Middle Rio Grande valley in New Mexico.
+                                    Users can click on individual polygons to view vegetation community type, area, and
+                                    evapotranspiration (ET) trends over time.
+                                    The map also enables users to dynamically change the display to visualize different
+                                    vegetation
+                                    characteristics, including community type,
+                                    tree cover, shrub cover, and herbaceous cover. Designed for a broad audience, this
+                                    tool provides
+                                    an accessible way to explore riparian
+                                    vegetation and water use dynamics across New Mexico at a local scale.
+                                </p>
+
+                                <h4>About the team</h4>
+                                <p>
+                                    Team member:
+                                    <a href="https://armandhammer.github.io/bengarland-site/personal/index.html"
+                                        target="_blank">Ben
+                                        Garland</a>
+                                    (bengarland@unm.edu)
+                                </p>
+                                <p>
+                                    Team member:
+                                    <a href="https://corrie-gonzalez.github.io/" target="_blank">Corrie Gonzalez</a>
+                                    (cdreas88@unm.edu)
+                                </p>
+                                <p>
+                                    Team member:
+                                    <a href="https://meirahw.github.io/" target="_blank">Meirah Williamson</a>
+                                    (meirahw@unm.edu)
+                                </p>
+                                <p>
+                                    Project advisor:
+                                    <a href="https://www.lipingyang.org" target="_blank">Dr. Liping Yang</a>
+                                    (course instructor of GEOG 485L/585L Interactive Web Mapping)
+                                </p>
+
+                                <h4>Acknowledgements</h4>
+                                <p>
+                                    <b>Dataset sources: </b>
+
+                                <ul>
+                                    <li><a href="https://nhnm.unm.edu/riparian/NMRipMap" target="_blank">New Mexico
+                                            Riparian Habitat
+                                            Map (NMRipMap)</a></li>
+                                    <li>Evapotransipiration values came from models produced from collaborators at New
+                                        Mexico State
+                                        University</li>
+                                </ul>
+
+                                </p>
+
+                                <p>
+                                    Examples and libraries:
+                                    <a href="https://leafletjs.com/" target="_blank">Leaflet</a>,
+                                    <a href="https://getbootstrap.com/docs/3.4/javascript/#modals"
+                                        target="_blank">Bootstrap Modal
+                                        Plugin</a>,
+                                    <a href="https://d3js.org/" target="_blank">D3.js</a>
+                                </p>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
-
-                <div class="modal-body">
-                    <h4>About the project</h4>
-                    <p> This web mapping application allows users to explore riparian ecosystem patterns across the
-                        Middle Rio Grande valley in New Mexico.
-                        Users can click on individual polygons to view vegetation community type, area, and
-                        evapotranspiration (ET) trends over time.
-                        The map also enables users to dynamically change the display to visualize different vegetation
-                        characteristics, including community type,
-                        tree cover, shrub cover, and herbaceous cover. Designed for a broad audience, this tool provides
-                        an accessible way to explore riparian
-                        vegetation and water use dynamics across New Mexico at a local scale.
-                    </p>
-
-                    <h4>About the team</h4>
-                    <p>
-                        Team member:
-                        <a href="https://armandhammer.github.io/bengarland-site/personal/index.html" target="_blank">Ben
-                            Garland</a>
-                        (bengarland@unm.edu)
-                    </p>
-                    <p>
-                        Team member:
-                        <a href="https://corrie-gonzalez.github.io/" target="_blank">Corrie Gonzalez</a>
-                        (cdreas88@unm.edu)
-                    </p>
-                    <p>
-                        Team member:
-                        <a href="https://meirahw.github.io/" target="_blank">Meirah Williamson</a>
-                        (meirahw@unm.edu)
-                    </p>
-                    <p>
-                        Project advisor:
-                        <a href="https://www.lipingyang.org" target="_blank">Dr. Liping Yang</a>
-                        (course instructor of GEOG 485L/585L Interactive Web Mapping)
-                    </p>
-
-                    <h4>Acknowledgements</h4>
-                    <p>
-                        <b>Dataset sources: </b>
-
-                    <ul>
-                        <li><a href="https://nhnm.unm.edu/riparian/NMRipMap" target="_blank">New Mexico Riparian Habitat
-                                Map (NMRipMap)</a></li>
-                        <li>Evapotransipiration values came from models produced from collaborators at New Mexico State
-                            University</li>
-                    </ul>
-
-                    </p>
-
-                    <p>
-                        Examples and libraries:
-                        <a href="https://leafletjs.com/" target="_blank">Leaflet</a>,
-                        <a href="https://getbootstrap.com/docs/3.4/javascript/#modals" target="_blank">Bootstrap Modal
-                            Plugin</a>,
-                        <a href="https://d3js.org/" target="_blank">D3.js</a>
-                    </p>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-
-            </div>
-        </div>
-    </div>
 </body>
 
 </html>

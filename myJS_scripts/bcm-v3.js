@@ -72,7 +72,9 @@ var vegetationColorMap = {};
 
 function createLeafletMap() {
     return L.map("map").setView([MAP_START_LAT, MAP_START_LON], MAP_START_ZOOM);
+
 }
+
 
 /* Used ChatGPT to help figure out how to look up and add the reference layer to layer on top of satellite imagery*/
 function createSatelliteBasemap() {
@@ -124,7 +126,10 @@ function addLayerControl() {
         },
         {
             "Reference Layer Labels": satelliteLayers.labels,
-            "Data Layer": vegetationFillLayer
+            "Vegetation Community": vegetationFillLayer
+        },
+                {
+            position: "topright"
         }
     ).addTo(map);
 }
@@ -139,7 +144,7 @@ function addZoomToDataControl() {
         zoomToDataControl.remove();
     }
 
-    zoomToDataControl = L.control({ position: "topleft" });
+    zoomToDataControl = L.control({ position: "topright"});
 
     zoomToDataControl.onAdd = function () {
         var div = L.DomUtil.create("div", "leaflet-bar leaflet-control");
@@ -363,8 +368,8 @@ function addGeoJSONToMap(geojsonData) {
     vegetationFillLayer.addTo(map);
     vegetationOutlineLayer.addTo(map);
 
-    addZoomToDataControl();
     addLayerControl();
+    addZoomToDataControl();
     addVegetationLegend();
 }
 
