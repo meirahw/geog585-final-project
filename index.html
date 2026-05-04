@@ -53,8 +53,14 @@
 
             <!-- Row 1: Header -->
             <div class="info-row" id="row-header">
-                <span class="header-title">Riparian Ecosystems Info Panel</span>
+                <span class="header-title">Riparian Ecosystems Info Panel
+                    <button id="about-riparian-map-button" class="btn btn-sm btn-secondary about-btn" type="button"
+                        data-bs-toggle="modal" data-bs-target="#about-riparian-map-modal">
+                        ?
+                </button>
+                </span>
                 <span class="header-subtitle">Middle Rio Grande</span>
+
             </div>
 
             <!-- Row 2: Vegetation community name -->
@@ -116,6 +122,59 @@
             <!-- Reference: Bootstrap Modal docs
             https://getbootstrap.com/docs/5.3/components/modal/
             Used for Bootstrap 5 modal open/close behavior and data attributes. -->
+
+            <!--========================================================================================
+             Modal for about-Riparian-Map-button
+             =======================================================================================-->
+
+ <div class="modal fade" id="about-riparian-map-modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h4 class="modal-title">About this chart</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+
+                        <div class="modal-body">
+                            <p>
+                                Vegetation community type polygons come from the
+                                <a href="https://nhnm.unm.edu/riparian/NMRipMap" target="_blank"> New Mexico Riparian Habitat
+                                    Map (NMRipMap).</a> If you are interested in learning more about NMRipMap vegetation community types,
+                                check out the <a href="data/NMRipMap_Version2.0Plus_AnnotatedLegend.pdf" target="_blank">
+                                    Annotated Legend</a>
+                                <br>
+                                <br>
+                                Percent cover values represent the relative distribution of vegetation structure
+                                (tree, shrub, herbaceous) within each polygon, derived from Light Detection and
+                                Ranging (LiDAR) data collected in 2018
+                                <br>
+                                <br>
+                                Selecting a polygon updates the information panel to reflect the vegetation type,
+                                percent tree, shrub, and herbaceous cover, and area (acres) for the selected polygon.
+                                <br>
+                                <br>
+                                <i>Note: Vegetation community type polygons are based on 2022 satellite imagery, and
+                                    vegetation may have changed in some areas since classification. Additionally, percent
+                                    cover by stratum is based on dominant vegetation height and does not capture understory
+                                    vegetation beneath taller canopies. These data may not reflect current conditions and should
+                                    be used for general context.
+                                </i>
+                                  
+                            </p>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                Close
+                            </button>
+                        </div>
+
+        <!-- ========================================================================================
+         Modal for about-ET-button
+        ======================================================================================-->
+
+
             <div class="modal fade" id="about-et-modal" tabindex="-1" role="dialog">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">

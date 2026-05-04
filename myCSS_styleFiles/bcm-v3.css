@@ -241,6 +241,23 @@ body {
     border-color: steelblue;
 }
 
+/* about Riparian Map button */
+#about-riparian-map-button {
+    background-color: #d8f3dc;
+    color: black;
+    border: 1px solid #0e241b;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+/* about button changes color when hovering */
+#about-et-button:hover {
+    background-color: steelblue;
+    color: white;
+    border-color: steelblue;
+}
+
+
 /* PART 7: RESPONSIVE LAYOUT */
 
 /* Stack map above panel on small screens */
