@@ -169,10 +169,12 @@ body {
 /* Container for D3 chart and placeholder */
 #et-chart-wrapper {
     position: relative;
+    min-height: 170px;
     overflow-x: hidden;
     overflow-y: hidden;
     height: auto;
     box-sizing: border-box;
+    display: block;
 }
 
 /* D3 chart */
@@ -241,20 +243,67 @@ body {
     border-color: steelblue;
 }
 
+.et-legend {
+    gap: 14px;
+    align-items: center;
+    margin-left: auto;
+    font-size: 12px;
+    color: #333;
+    display: none;
+}
+
+#row-et.has-chart .et-legend {
+    display: flex;
+}
+
+.et-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.et-label-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* group title and about button */
+.et-title-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    min-width: 0;
+}
+
+/* legend symbols */
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: steelblue;
+}
+
+.box {
+    width: 12px;
+    height: 12px;
+    background: #cce5df;
+    border: 1px solid #999;
+}
+
 /* about Riparian Map button */
 #about-riparian-map-button {
     background-color: #d8f3dc;
     color: black;
-    border: 1px solid #0e241b;
-    border-radius: 4px;
     font-size: 12px;
 }
 
 /* about button changes color when hovering */
-#about-et-button:hover {
-    background-color: steelblue;
+#about-riparian-map-button:hover {
+    background-color: #74c69d;
     color: white;
-    border-color: steelblue;
+    
 }
 
 
@@ -276,7 +325,6 @@ body {
         width: 100%;
     }
 }
-
 
 /* PART 8: COLLAPSIBLE LEGEND */
 
@@ -339,7 +387,7 @@ body {
 .legend-item {
     display: flex;
     align-items: flex-start;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
 }
 
 /* Legend colors rectangles */
@@ -366,24 +414,73 @@ body {
 /* Show legend items with scroll when expanded */
 .legend-expanded .legend-body {
     display: block;
-    max-height: 70vh;
+    max-height: 380px;
     overflow-y: auto;
+    
 }
 
+/* Existing desktop/default styles */
+
+@media (max-height: 800px) {
+    .legend-expanded .legend-body {
+        max-height: 250px;
+    }
+}
+
+/* ADD mobile overrides below */
+@media (max-width: 768px) {
+
+    .legend,
+    .legend-collapsed,
+    .legend-expanded {
+        width: 180px;
+        padding: 8px;
+        font-size: 11px;
+    }
+
+    .legend-title {
+        font-size: 12px;
+    }
+
+    .legend-toggle-btn {
+        font-size: 10px;
+        padding: 2px 6px;
+    }
+
+    .legend-expanded .legend-body {
+        max-height: 140px;
+    }
+
+    .legend-color {
+        width: 10px;
+        height: 10px;
+        margin-right: 6px;
+    }
+
+    .legend-item {
+        margin-bottom: 2px;
+        align-items: center;
+    }
+
+    .legend-label {
+        line-height: 1.1;
+    }
+}
 
 /* ABOUT BUTTON */
 
 /* Button positioned in bottom-right of map */
 #about-map-button {
     position: absolute;
-    right: 15px;
-    bottom: 40px;
+    left: 10px;
+    bottom: 10px;
     z-index: 1000;
     display: block;
     background-color: white;
     color: #333;
     border: 1px solid #999;
     padding: 6px 10px;
+    font-size: 16px;
 }
 
 /* Hover effect for about button */

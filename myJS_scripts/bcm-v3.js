@@ -75,6 +75,12 @@ function createLeafletMap() {
 
 }
 
+// Move zoom button. Source: https://stackoverflow.com/questions/33614912/how-to-locate-leaflet-zoom-control-in-a-desired-position
+function moveZoomButton() {
+    L.control.zoom({
+        position: 'bottomright'
+    }).addTo(map);
+}
 
 /* Used ChatGPT to help figure out how to look up and add the reference layer to layer on top of satellite imagery*/
 function createSatelliteBasemap() {
@@ -128,7 +134,7 @@ function addLayerControl() {
             "Reference Layer Labels": satelliteLayers.labels,
             "Vegetation Community": vegetationFillLayer
         },
-                {
+        {
             position: "topright"
         }
     ).addTo(map);
@@ -144,7 +150,7 @@ function addZoomToDataControl() {
         zoomToDataControl.remove();
     }
 
-    zoomToDataControl = L.control({ position: "topright"});
+    zoomToDataControl = L.control({ position: "bottomright" });
 
     zoomToDataControl.onAdd = function () {
         var div = L.DomUtil.create("div", "leaflet-bar leaflet-control");
@@ -371,6 +377,7 @@ function addGeoJSONToMap(geojsonData) {
     addLayerControl();
     addZoomToDataControl();
     addVegetationLegend();
+    moveZoomButton();
 }
 
 /* Reference: jQuery getJSON() Method
@@ -617,6 +624,8 @@ function updateInfoPanel(properties) {
    https://d3js.org/getting-started
    Reference for basic line chart structure (scales, axes, line generator). */
 
+
+   
 function updateETChart(polygonData) {
 
     // for window resizer
@@ -642,13 +651,16 @@ function updateETChart(polygonData) {
         d3.select("#et-chart-wrapper")
             .classed("has-chart", false);
 
+        d3.select("#row-et")
+            .classed("has-chart", false);
+
         // resets scroll all the way to the left
         document.querySelector("#et-chart-wrapper").scrollTo({
             left: 0,
             behavior: "smooth"
         });
-        
-        
+
+
     } else {
         // draw chart if there is data
         drawETChart(polygonData);
@@ -656,6 +668,9 @@ function updateETChart(polygonData) {
         // adds scrollbar
         // https://www.geeksforgeeks.org/javascript/d3-js-selection-classed-function/
         d3.select("#et-chart-wrapper")
+            .classed("has-chart", true);
+
+        d3.select("#row-et")
             .classed("has-chart", true);
 
         // resets scroll    
@@ -669,6 +684,9 @@ function updateETChart(polygonData) {
 
 $(document).ready(function () {
     map = createLeafletMap();
+
+    // force remove zoom buttons, otherwise it shows up in top left when page is loading and then moves
+    map.zoomControl.remove();
 
     satelliteLayers = createSatelliteBasemap();
     simpleLayer = createSimpleBasemap();

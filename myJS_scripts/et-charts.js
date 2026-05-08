@@ -124,7 +124,6 @@ function drawETChart(data) {
     }
 
     // select chart and get width of client browser
-    //var container = document.querySelector("#et-chart");
     var container = document.querySelector("#et-chart-wrapper");
 
     var containerWidth = container.getBoundingClientRect().width;
