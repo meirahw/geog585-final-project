@@ -63,9 +63,9 @@ body {
 .info-row {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     padding: 14px 24px;
-    flex: 1;
+    flex: 0 0 auto;
     min-height: 60px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
@@ -275,6 +275,10 @@ body {
     gap: 8px;
     flex: 1;
     min-width: 0;
+}
+
+.et-title-group .info-label {
+    line-height: 1.2;
 }
 
 /* legend symbols */
