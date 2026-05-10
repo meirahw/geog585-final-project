@@ -20,7 +20,7 @@ body {
     display: flex;
     width: 100%;
     height: 100vh;
-        flex-direction: row;
+    flex-direction: row;
 
 }
 
@@ -237,7 +237,7 @@ body {
 /* about ET Chart button */
 #about-et-button {
     background-color: rgb(159, 166, 172);
-        background-color: #ccc;
+    background-color: #ccc;
 
     color: white;
     color: black;
