@@ -477,7 +477,7 @@ body {
 #about-map-button {
     position: absolute;
     left: 10px;
-    bottom: 10px;
+    top: 10px;
     z-index: 1000;
     display: block;
     background-color: white;
@@ -492,6 +492,11 @@ body {
     background-color: #f3f3f3;
 }
 
+/* Used CHAT GPT to figure out how to move legend below about map button*/
+/* Move legend below button */
+.leaflet-top.leaflet-left .legend {
+    margin-top: 55px;
+}
 
 /* ZOOM TO EXTENT BUTTON */
 

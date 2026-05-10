@@ -138,6 +138,7 @@ function addLayerControl() {
             position: "topright"
         }
     ).addTo(map);
+
 }
 
 
@@ -693,6 +694,12 @@ $(document).ready(function () {
 
     satelliteLayers.imagery.addTo(map);
     satelliteLayers.labels.addTo(map);
+
+    // Add scale bar
+    L.control.scale({
+        position: 'bottomleft',
+        imperial: false
+    }).addTo(map);
 
     showDefaultInfoPanel();
     loadGeoJSONFile();
