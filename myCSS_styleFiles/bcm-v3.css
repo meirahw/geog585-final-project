@@ -98,19 +98,21 @@ body {
     padding: 12px 24px;
 }
 
-/* Title text inside header */
+/* Title text inside header*/
 .header-title {
-    font-size: 18px;
+    font-size: 28px;
     font-weight: bold;
     letter-spacing: 0.03em;
 }
 
-/* Subtitle text inside header */
+/*Subtitle text inside header*/
 .header-subtitle {
-    font-size: 13px;
-    opacity: 0.75;
+    font-size: 20px;
+    font-weight: bold;
+    opacity: 0.85;
     margin-top: 3px;
 }
+
 
 /* Vegetation name row */
 #row-name {
