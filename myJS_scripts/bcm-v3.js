@@ -695,11 +695,32 @@ $(document).ready(function () {
     satelliteLayers.imagery.addTo(map);
     satelliteLayers.labels.addTo(map);
 
-    // Add scale bar
-    L.control.scale({
-        position: 'bottomleft',
+    // Used CHAT GPT to figure out how to override the default Feet that was in the betterscale JS plug in
+    // Also used chatGPT to find out where to download the betterscale Plug in
+    //Used https://geoair-lab.github.io/iTRELISmap/ to help with scale bar add on
+    L.control.betterscale({
+        position: "bottomleft",
+        metric: true,
         imperial: false
     }).addTo(map);
+
+    // add north arrow to the map
+    //This code came from: https://geoair-lab.github.io/iTRELISmap/
+    //Img came from: https://freesvg.org/north-arrow
+    //Used CHAT GPT to figure out out to put what box around N arrow so you can see it better.
+    const north = L.control({ position: "bottomleft" });
+
+    north.onAdd = function () {
+        const div = L.DomUtil.create("div");
+        div.style.backgroundColor = "white";
+        div.style.padding = "4px";
+        div.style.borderRadius = "4px";
+        div.style.boxShadow = "0 1px 5px rgba(0,0,0,0.4)";
+        div.innerHTML = '<img src="images/north-arrow-2.png" width="45" height="45">';
+        return div;
+    };
+    north.addTo(map);
+
 
     showDefaultInfoPanel();
     loadGeoJSONFile();

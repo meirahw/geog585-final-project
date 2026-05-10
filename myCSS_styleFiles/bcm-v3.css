@@ -516,3 +516,20 @@ body {
 .zoom-data-btn:hover {
     background: #f4f4f4;
 }
+
+/* Used CHAT GPT to figure out how to modify  leaflet scale bar to make it easier to see */
+.leaflet-control-scale-line {
+    background-color: rgba(255,255,255,0.95);
+    border: 2px solid #444;
+    border-top: none;
+
+    color: #222;
+    font-size: 12px;
+    font-weight: 600;
+
+    padding: 3px 10px;
+
+    min-width: 140px;
+
+    box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+}
