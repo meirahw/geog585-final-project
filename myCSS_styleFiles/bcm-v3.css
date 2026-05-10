@@ -20,6 +20,8 @@ body {
     display: flex;
     width: 100%;
     height: 100vh;
+        flex-direction: row;
+
 }
 
 
@@ -90,7 +92,8 @@ body {
 #row-header {
     background-color: #1b4332;
     color: white;
-    flex: 0 0 80px;
+    flex: 0 0 auto;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -100,17 +103,19 @@ body {
 
 /* Title text inside header*/
 .header-title {
-    font-size: 28px;
+    font-size: clamp(20px, 2.2vw, 28px);
     font-weight: bold;
     letter-spacing: 0.03em;
+    line-height: 1.1;
 }
 
 /*Subtitle text inside header*/
 .header-subtitle {
-    font-size: 20px;
+    font-size: clamp(14px, 1.6vw, 20px);
     font-weight: bold;
     opacity: 0.85;
     margin-top: 3px;
+    line-height: 1.1;
 }
 
 
@@ -231,11 +236,15 @@ body {
 
 /* about ET Chart button */
 #about-et-button {
-    background-color: #cce5df;
+    background-color: rgb(159, 166, 172);
+        background-color: #ccc;
+
+    color: white;
     color: black;
-    border: 1px solid steelblue;
-    border-radius: 4px;
     font-size: 12px;
+    border-color: #555;
+
+
 }
 
 /* about button changes color when hovering */
@@ -309,7 +318,7 @@ body {
 #about-riparian-map-button:hover {
     background-color: #74c69d;
     color: white;
-    
+
 }
 
 
@@ -422,7 +431,7 @@ body {
     display: block;
     max-height: 380px;
     overflow-y: auto;
-    
+
 }
 
 /* Existing desktop/default styles */
@@ -433,7 +442,7 @@ body {
     }
 }
 
-/* ADD mobile overrides below */
+/* mobile */
 @media (max-width: 768px) {
 
     .legend,
@@ -521,7 +530,7 @@ body {
 
 /* Used CHAT GPT to figure out how to modify  leaflet scale bar to make it easier to see */
 .leaflet-control-scale-line {
-    background-color: rgba(255,255,255,0.95);
+    background-color: rgba(255, 255, 255, 0.95);
     border: 2px solid #444;
     border-top: none;
 
@@ -533,5 +542,5 @@ body {
 
     min-width: 140px;
 
-    box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
 }
