@@ -91,21 +91,16 @@ body {
 }
 
 /* Header row (title area at top of panel) */
- #row-header {
+#row-header {
     background-color: #1b4332;
     color: white;
-    flex: 0 0 auto;
-    display: flex;
-    flex: 0 0 auto;
-    display: flex;
+    flex: 0 0 80px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 14px 24px;
-    min-height: 100px;
+    padding: 12px 24px;
 }
-
 
 /* Title text inside header*/
 .header-title {
