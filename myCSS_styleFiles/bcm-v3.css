@@ -87,16 +87,19 @@ body {
 }
 
 /* Header row (title area at top of panel) */
-#row-header {
+ #row-header {
     background-color: #1b4332;
     color: white;
-    flex: 0 0 80px;
+    flex: 0 0 auto;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 12px 24px;
+    padding: 14px 24px;
+    min-height: 100px;
 }
+
 
 /* Title text inside header*/
 .header-title {
@@ -231,12 +234,12 @@ body {
 
 /* about ET Chart button */
 #about-et-button {
-    background-color: #cce5df;
+    background-color: #91c0d7;
     color: black;
-    border: 1px solid steelblue;
-    border-radius: 4px;
-    font-size: 12px;
-}
+    border: 1.5px solid rgb(14, 15, 15);
+    border-radius: 6px;
+    font-size: 16px;
+} 
 
 /* about button changes color when hovering */
 #about-et-button:hover {
@@ -294,20 +297,22 @@ body {
 .box {
     width: 12px;
     height: 12px;
-    background: #cce5df;
+    background: #e6eceb;
     border: 1px solid #999;
 }
 
 /* about Riparian Map button */
 #about-riparian-map-button {
-    background-color: #d8f3dc;
+    background-color: #d0e3d3;
+    border: 1.5px solid rgb(14, 15, 15);
     color: black;
-    font-size: 12px;
+    border-radius: 6px;
+    font-size: 16px;
 }
 
 /* about button changes color when hovering */
 #about-riparian-map-button:hover {
-    background-color: #74c69d;
+    background-color: #afe0c8;
     color: white;
     
 }
