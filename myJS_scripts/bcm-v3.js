@@ -63,6 +63,8 @@ var isLegendExpanded = false;
 
 var vegetationColorMap = {};
 
+var currentETData = null;
+
 
 /* MAP SETUP */
 
